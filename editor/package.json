@@ -1,0 +1,57 @@
+{
+  "name": "blyx-cormorant",
+  "displayName": "Blyx Cormorant",
+  "description": "Separate variation in packet delivery from a constant difference between clocks.",
+  "version": "0.1.0",
+  "publisher": "RahulChaube",
+  "license": "(MIT OR Apache-2.0)",
+  "icon": "logo.png",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "keywords": [
+    "blyx",
+    "cormorant",
+    "framework"
+  ],
+  "homepage": "https://www.blyx-lang.space/packages/cormorant",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rahulchaube1/blyx-cormorant.git",
+    "directory": "editor"
+  },
+  "bugs": {
+    "url": "https://github.com/Rahulchaube1/blyx-cormorant/issues"
+  },
+  "extensionDependencies": [
+    "RahulChaube.blyx-language"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "blyx",
+        "path": "./snippets/framework.json"
+      }
+    ],
+    "walkthroughs": [
+      {
+        "id": "cormorant.start",
+        "title": "Get started with Cormorant",
+        "description": "Separate variation in packet delivery from a constant difference between clocks.",
+        "steps": [
+          {
+            "id": "run",
+            "title": "Run the Cormorant example",
+            "description": "Create an empty .blyx file, insert blyx-cormorant-demo and choose **Blyx: Run File**.\n[Open the documentation](https://www.blyx-lang.space/packages/cormorant)",
+            "media": {
+              "markdown": "walkthrough.md"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+fn transitspan_min2(a: f64, b: f64) -> f64 {
+    if a < b {
+        return a;
+    }
+    b
+}
+
+fn transitspan_max2(a: f64, b: f64) -> f64 {
+    if a > b {
+        return a;
+    }
+    b
+}
+
+fn transitspan_finite(values: vector) -> bool {
+    let mut i = 0;
+    while i < len(values) {
+        let value = at(values, i);
+        if !(value - value == 0.0) {
+            return false;
+        }
+        i += 1;
+    }
+    true
+}
+
+fn transitspan_integers(values: vector) -> bool {
+    let mut i = 0;
+    while i < len(values) {
+        let value = at(values, i);
+        if !(value >= -9007199254740991.0 && value <= 9007199254740991.0 && value % 1.0 == 0.0) {
+            return false;
+        }
+        i += 1;
+    }
+    true
+}
+
+fn transitspan_compute(sent: vector, arrived: vector) -> vector {
+    if len(sent) == 0 || len(sent) != len(arrived) {
+        return [];
+    }
+    let mut lo = at(arrived, 0) - at(sent, 0);
+    let mut hi = lo;
+    let mut reversed = 0;
+    let mut i = 1;
+    while i < len(sent) {
+        let d = at(arrived, i) - at(sent, i);
+        lo = transitspan_min2(lo, d);
+        hi = transitspan_max2(hi, d);
+        if at(arrived, i) < at(arrived, i - 1) {
+            reversed += 1;
+        }
+        i += 1;
+    }
+    [lo, hi, reversed]
+}
+
+// Summarize observed packet transit differences and arrival reorderings.
+// Returns [minimum arrival minus send, maximum, backward arrival steps]. Times use the same tick unit and a stable offset between clocks.
+pub fn transitspan_profile(sent: vector, arrived: vector) -> vector {
+    if !transitspan_integers(sent) { return []; }
+    if !transitspan_integers(arrived) { return []; }
+    let result = transitspan_compute(sent, arrived);
+    if !transitspan_finite(result) { return []; }
+    result
+}

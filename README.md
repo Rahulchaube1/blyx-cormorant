@@ -1,10 +1,14 @@
-<img src="assets/logo.png" width="112" height="112" alt="Cormorant logo">
+<img src="assets/logo.png" width="112" height="112" alt="A dark cormorant with a turquoise eye extends one wet wing.">
 
 # Cormorant
 
 Separate variation in packet delivery from a constant difference between clocks. This Blyx workflow framework is part of the networking and cache control collection.
 
 Absolute one-way delay depends on clock alignment. Changes in transit can still reveal jitter when the clock offset is stable. [IETF RFC 3550, interarrival jitter](https://www.rfc-editor.org/rfc/rfc3550.html#appendix-A.8)
+
+## Editor extension
+
+Install **RahulChaube.blyx-cormorant** to run the worked example and use the framework’s function completions in a Blyx file. Open an empty `.blyx` file, enter `blyx-cormorant-demo`, then choose **Blyx: Run File**. [Editor downloads](https://www.blyx-lang.space/packages/cormorant#editor) · [Download the extension](https://github.com/Rahulchaube1/blyxxxx/releases/download/framework-editors-v0.1.0/blyx-cormorant-0.1.0.vsix) · [Starter with framework source](https://github.com/Rahulchaube1/blyxxxx/releases/download/framework-editors-v0.1.0/blyx-cormorant-starter-0.1.0.zip)
 
 ## Install and run
 
@@ -81,7 +85,7 @@ This release includes identical copies of both library modules so a tagged clone
 
 ## Verification and contributions
 
-The regression suite in [tests.blyx](tests.blyx) checks the example, boundary cases and invalid inputs. Include a short reproducer and your compiler version in [an issue](https://github.com/Rahulchaube1/blyx-cormorant/issues). The source is dual-licensed under [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE). The package artwork uses [Lucide icons](https://lucide.dev/license); see [artwork notices](assets/NOTICE.txt).
+The regression suite in [tests.blyx](tests.blyx) checks the example, boundary cases and invalid inputs. Include a short reproducer and your compiler version in [an issue](https://github.com/Rahulchaube1/blyx-cormorant/issues). The source is dual-licensed under [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE). The [artwork notice](assets/NOTICE.txt) records credits for earlier editions.
 
 ## Connect with Rahul Chaube
 

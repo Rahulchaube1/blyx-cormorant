@@ -1,0 +1,49 @@
+use transitspan;
+use jittermean;
+
+fn cormorant_finite(values: vector) -> bool {
+    let mut i = 0;
+    while i < len(values) {
+        let value = at(values, i);
+        if !(value - value == 0.0) {
+            return false;
+        }
+        i += 1;
+    }
+    true
+}
+
+fn cormorant_integers(values: vector) -> bool {
+    let mut i = 0;
+    while i < len(values) {
+        let value = at(values, i);
+        if !(value >= -9007199254740991.0 && value <= 9007199254740991.0 && value % 1.0 == 0.0) {
+            return false;
+        }
+        i += 1;
+    }
+    true
+}
+
+fn cormorant_compute(sent: vector, arrived: vector, initial: f64) -> vector {
+    let span = transitspan_profile(sent, arrived);
+    if len(span) == 0 || at(span, 2) > 0.0 {
+        return [];
+    }
+    let j = jittermean_rtp(sent, arrived, initial);
+    if len(j) == 0 {
+        return [];
+    }
+    [at(span, 1) - at(span, 0), at(j, 0), at(j, 1)]
+}
+
+// Separate variation in packet delivery from a constant difference between clocks.
+// Returns [transit range, smoothed jitter, adjacent pairs]. Input rows must be in arrival order and use unwrapped sender timestamps.
+pub fn cormorant_trace(sent: vector, arrived: vector, initial: f64) -> vector {
+    if !cormorant_integers(sent) { return []; }
+    if !cormorant_integers(arrived) { return []; }
+    if !(initial >= 0.0 && initial - initial == 0.0) { return []; }
+    let result = cormorant_compute(sent, arrived, initial);
+    if !cormorant_finite(result) { return []; }
+    result
+}

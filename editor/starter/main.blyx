@@ -1,0 +1,14 @@
+use vendor::cormorant::cormorant;
+
+fn main() {
+    let sent = [0, 16];
+    let arrived = [100, 148];
+    let initial = 0.0;
+    let result = cormorant_trace(sent, arrived, initial);
+    if len(result) == 0 { println!("invalid"); return; }
+    let mut i = 0;
+    while i < len(result) {
+        println!(at(result, i));
+        i += 1;
+    }
+}
